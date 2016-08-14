@@ -5,23 +5,15 @@
         .module('SignalRAngular')
         .controller('MainController', MainController);
 
-    MainController.$inject = ['$scope', 'ChatService', '$timeout'];
-    function MainController($scope, ChatService, $timeout) {
+    MainController.$inject = ['$scope', 'Messages', '$timeout'];
+    function MainController($scope, Messages, $timeout) {
         $scope.title = "SignalR with AngularJS";
         $scope.subtitle = "Cats and dogs living together.";
+        $scope.messages = Messages.all;
         
-        $scope.sendMessage = function () {
-            ChatService.send('Martin', 'Hello, Hub!');
+        $scope.sendMessage = function (name, message) {
+            Messages.send(name, message);
         };
-
-        // var chat = $.connection.chatHub;
-        // chat.client.broadcastMessage = function (name, message) {
-        //     alert(name, message);
-        // };
-        // $.connection.hub.start().done(function () {
-        //     console.log('Connected...');
-        //     chat.server.send('Martin', 'Hello!');
-        // });
 
     }
 })();

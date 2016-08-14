@@ -1,16 +1,38 @@
 (function () {
     'use strict';
 
-    angular
-        .module('SignalRAngular')
-        .factory('ChatService', ChatService);
+    angular.module('SignalRAngular').factory('Messages', Messages);
 
-    ChatService.$inject = ['$rootScope', 'Hub', '$timeout'];
-    function ChatService($rootScope, Hub, $timeout) {
+    Messages.$inject = ['$rootScope', 'Hub'];
+
+    function Messages($rootScope, Hub) {
+        var Messages = this;
+
+        // Define ViewModel.
+        var Message = function (message) {
+            if (!message) message = {};
+
+            var Message = {
+                Id: message.Id | null,
+                Name: message.Name || 'New',
+                Message: message.Message || 'New'
+            };
+            return Message;
+        };
+
         var chatHub = new Hub('chatHub', {
             listeners: {
+                'newConnection': function (id) {
+                    Messages.connected.push(id);
+                    $rootScope.$apply();
+                },
+                'removeConnection': function (id) {
+                    Messages.connected.splice(Messages.connected.indexOf(id), 1);
+                    $rootScope.$apply();
+                },
                 'broadcastMessage': function (name, message) {
-                    alert(name, message);
+                    Messages.all.push(new Message({ Name: name, Message: message }));
+                    $rootScope.$apply();
                 }
             },
             methods: ['send'],
@@ -38,10 +60,10 @@
             }
         });
 
-        return {
-            send: function (name, message) {
-                chatHub.send(name, message); // Calling Send method on the ChatHub.
-            }
+        Messages.send = function (name, message) {
+            chatHub.send(name, message); // Calling Send method on the ChatHub.
         };
+        
+        return Messages;
     }
 })();
