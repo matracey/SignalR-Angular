@@ -1,1 +1,8 @@
 /* Styles go here. */
+.message-well {
+    min-height: 500px;
+}
+
+.name {
+    font-weight: bold;
+}

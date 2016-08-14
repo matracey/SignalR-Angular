@@ -28,12 +28,12 @@
                 <label class="sr-only" for="message-input">Your message.</label>
                 <div class="col-xs-12 col-sm-3 col-md-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="name-input" placeholder="Your name" />
+                        <input type="text" class="form-control" id="name-input" placeholder="Your name" ng-model="name" />
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-7 col-md-8">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="message-input" placeholder="Your message" />
+                        <input type="text" class="form-control" id="message-input" placeholder="Your message" ng-model="message" />
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-2 col-md-1">
@@ -41,6 +41,14 @@
                 </div>
             </div>
         </form>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="well well-sm message-well">
+                    <p ng-repeat="message in messages"><span class="name">{{message.Name}}: </span>{{message.Message}}</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="/lib/jquery/dist/jquery.min.js"></script>

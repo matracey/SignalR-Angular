@@ -31,7 +31,12 @@
                     $rootScope.$apply();
                 },
                 'broadcastMessage': function (name, message) {
-                    Messages.all.push(new Message({ Name: name, Message: message }));
+                    var msg = new Message({ Name: name, Message: message });
+
+                    msg.Name = name;
+                    msg.Message = message;
+
+                    Messages.all.push(msg);
                     $rootScope.$apply();
                 }
             },
@@ -59,6 +64,12 @@
                 console.error(error);
             }
         });
+
+        // Properties
+        Messages.all = [];
+        Messages.connected = [];
+
+        // Methods
 
         Messages.send = function (name, message) {
             chatHub.send(name, message); // Calling Send method on the ChatHub.
