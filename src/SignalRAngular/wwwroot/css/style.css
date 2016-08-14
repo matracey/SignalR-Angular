@@ -1,6 +1,12 @@
 /* Styles go here. */
+.upper-third {
+    min-height: 200px;
+    height: 20%;
+}
+
 .message-well {
     min-height: 500px;
+    height: 70%!important;
 }
 
 .name {
