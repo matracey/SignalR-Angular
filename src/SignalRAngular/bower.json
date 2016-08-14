@@ -1,0 +1,13 @@
+{
+  "version": "0.0.1",
+  "name": "signalr-angular",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.6.3",
+    "angular": "^1.5.8",
+    "signalr": "^2.2.1",
+    "angular-signalr-hub": "^1.6.2"
+  },
+  "overrides": {}
+}

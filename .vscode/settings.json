@@ -1,0 +1,21 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "files.exclude": {
+        "**/*.lock*": true,
+        "**/*.sln": true,
+        "**/*.xproj": true,
+        "**/*.xproj.user": true,
+        "**/.bowerrc": true,
+        "**/.DS_Store": true,
+        "**/.git": true,
+        "**/.hg": true,
+        "**/.svn": true,
+        "**/.vs": true,
+        "**/.vscode": true,
+        "**/artifacts": true,
+        "**/bin": true,
+        "**/node_modules": true,
+        "**/obj": true,
+        "**/Properties": true
+    }
+}

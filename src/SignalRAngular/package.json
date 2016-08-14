@@ -1,0 +1,8 @@
+{
+  "version": "0.0.1",
+  "name": "signalr-angular",
+  "private": true,
+  "devDependencies": {
+    "bower": "latest"
+  }
+}
