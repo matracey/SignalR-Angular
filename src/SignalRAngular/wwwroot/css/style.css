@@ -17,3 +17,7 @@
 .date {
     font-style: italic;
 }
+
+input.ng-invalid {
+    border: 1px solid red;
+}

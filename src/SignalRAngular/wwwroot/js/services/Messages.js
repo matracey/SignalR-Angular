@@ -6,7 +6,11 @@
     Messages.$inject = ['$rootScope', 'Hub'];
 
     function Messages($rootScope, Hub) {
-        var Messages = this;
+        
+        var allMessages = [];
+        var displayedSubtitle = {
+            Text: "Cats and dogs living together."
+        };
 
         // Define ViewModel.
         var Message = function (message) {
@@ -23,26 +27,22 @@
 
         var chatHub = new Hub('chatHub', {
             listeners: {
-                'newConnection': function (id) {
-                    Messages.connected.push(id);
-                    $rootScope.$apply();
-                },
-                'removeConnection': function (id) {
-                    Messages.connected.splice(Messages.connected.indexOf(id), 1);
-                    $rootScope.$apply();
-                },
                 'loadMessages': function(messages) {
                     messages.forEach(function(message) {
-                        Messages.all.push(message);
+                        allMessages.push(message);
                     }, this);
                     $rootScope.$apply();
                 },
                 'broadcastMessage': function (message) {
-                    Messages.all.push(message);
+                    allMessages.push(message);
+                    $rootScope.$apply();
+                },
+                'broadcastSubtitle': function (subtitle) {
+                    displayedSubtitle.Text = subtitle.Text;
                     $rootScope.$apply();
                 }
             },
-            methods: ['send'],
+            methods: ['send', 'updateSubtitle'],
             stateChanged: function (state) {
                 switch (state.newState) {
                     case $.signalR.connectionState.connecting:
@@ -67,16 +67,24 @@
             }
         });
 
-        // Properties
-        if(!Messages.all)  Messages.all = [];
-        if(!Messages.connected) Messages.connected = [];
-
         // Methods
 
-        Messages.send = function (name, message) {
-            chatHub.send(name, message); // Calling Send method on the ChatHub.
+        var send = function (name, message) {
+            if(name.trim().length > 0 && message.trim().length > 0)
+                chatHub.send(name, message); // Calling Send method on the ChatHub.
+        };
+
+        var updateSubtitle = function (subtitle) {
+            if(subtitle.trim().length > 0)
+                chatHub.updateSubtitle(subtitle);
         };
         
-        return Messages;
+        return {
+            all: allMessages,
+            subtitle: displayedSubtitle,
+
+            send: send,
+            updateSubtitle: updateSubtitle
+        };
     }
 })();

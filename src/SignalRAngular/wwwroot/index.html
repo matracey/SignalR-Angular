@@ -21,24 +21,24 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 text-center">
-                    <h2>{{subtitle}}</h2>
+                    <h2 single-line="true" focus-select="true" edit-callback="subtitleUpdate" content-editable ng-model="subtitle.Text"></h2>
                 </div>
             </div>
-            <form ng-submit="sendMessage(name,message); message=''">
+            <form name="messageForm" ng-submit="sendMessage(name,message); message=''">
                 <div class="row">
                     <label class="sr-only" for="message-input">Your message.</label>
                     <div class="col-xs-12 col-sm-3 col-md-3">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="name-input" placeholder="Your name" ng-model="name" />
+                            <input type="text" class="form-control" id="name-input" placeholder="Your name" required ng-model="name" />
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-7 col-md-8">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="message-input" placeholder="Your message" ng-model="message" />
+                            <input type="text" class="form-control" id="message-input" placeholder="Your message" required ng-model="message" />
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-2 col-md-1">
-                        <button type="submit" class="btn btn-primary btn-block">Send!</button>
+                        <button type="submit" class="btn btn-primary btn-block" ng-disabled="!messageForm.$valid">Send!</button>
                     </div>
                 </div>
             </form>
@@ -53,20 +53,15 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-12 hidden-xs hidden-sm">
-                <pre>
-{{messages}}
-                </pre>
-        </div>
-    </div>
-
     <script src="/lib/jquery/dist/jquery.min.js"></script>
-    <script src="/lib/angular/angular.min.js"></script>
-    <script src="/lib/angular-signalr-hub/signalr-hub.min.js"></script>
     <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/lib/signalr/jquery.signalR.min.js"></script>
     <script src="/signalr/hubs"></script>
+
+    <script src="/lib/angular/angular.min.js"></script>
+    <script src="/lib/angular-signalr-hub/signalr-hub.min.js"></script>
+    <script src="/lib/angular-content-editable/dist/angular-content-editable.js"></script>
+
 
     <script src="js/app.js"></script>
 
