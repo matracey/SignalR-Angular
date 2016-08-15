@@ -52,6 +52,7 @@
     "postpublish": [ 
       "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%",
       "npm install",
+      "npm install -g bower-npm-resolver",
       "bower install" 
     ]
   },
