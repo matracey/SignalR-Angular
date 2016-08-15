@@ -47,15 +47,19 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="well well-sm message-well">
-                    <p ng-repeat="message in messages"><span class="name">{{message.Name}}: </span>{{message.Message}}</p>
+                    <p ng-repeat="message in messages" id="{{message.Id}}"><span class="date">{{message.Timestamp | date:'yyyy-MM-dd HH:mm:ss'}}: </span><span class="name">{{message.Name}}: </span>{{message.Message}}</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <pre>
+    <div class="row">
+        <div class="col-md-12 hidden-xs hidden-sm">
+                <pre>
 {{messages}}
-    </pre>
+                </pre>
+        </div>
+    </div>
 
     <script src="/lib/jquery/dist/jquery.min.js"></script>
     <script src="/lib/angular/angular.min.js"></script>

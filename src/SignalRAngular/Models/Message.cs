@@ -8,6 +8,7 @@ namespace SignalRAngular.Models
         public Message ()
         {
             Id = Guid.NewGuid();
+            Timestamp = DateTime.UtcNow;
         }
 
         [JsonProperty("Id")]
@@ -18,5 +19,7 @@ namespace SignalRAngular.Models
         
         [JsonProperty("Message")]
         public string Content { get; set; }
+
+        public DateTime Timestamp { get; set; }
     }
 }

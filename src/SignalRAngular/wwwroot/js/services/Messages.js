@@ -15,7 +15,8 @@
             var Message = {
                 Id: message.Id | null,
                 Name: message.Name || 'New',
-                Message: message.Message || 'New'
+                Message: message.Message || 'New',
+                Timestamp: message.Timestamp || Date.UTC()
             };
             return Message;
         };
