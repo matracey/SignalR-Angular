@@ -3,6 +3,7 @@
   "name": "signalr-angular",
   "private": true,
   "devDependencies": {
-    "bower": "latest"
+    "bower": "latest",
+    "bower-npm-resolver": "^0.4.0"
   }
 }
