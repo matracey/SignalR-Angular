@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using SignalRAngular.Models;
 
 namespace SignalRAngular
 {
@@ -17,6 +18,7 @@ namespace SignalRAngular
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSignalR();
+            services.AddSingleton<List<Message>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
