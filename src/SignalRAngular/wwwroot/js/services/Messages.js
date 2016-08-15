@@ -30,13 +30,14 @@
                     Messages.connected.splice(Messages.connected.indexOf(id), 1);
                     $rootScope.$apply();
                 },
-                'broadcastMessage': function (name, message) {
-                    var msg = new Message({ Name: name, Message: message });
-
-                    msg.Name = name;
-                    msg.Message = message;
-
-                    Messages.all.push(msg);
+                'loadMessages': function(messages) {
+                    messages.forEach(function(message) {
+                        Messages.all.push(message);
+                    }, this);
+                    $rootScope.$apply();
+                },
+                'broadcastMessage': function (message) {
+                    Messages.all.push(message);
                     $rootScope.$apply();
                 }
             },
@@ -66,8 +67,8 @@
         });
 
         // Properties
-        Messages.all = [];
-        Messages.connected = [];
+        if(!Messages.all)  Messages.all = [];
+        if(!Messages.connected) Messages.connected = [];
 
         // Methods
 

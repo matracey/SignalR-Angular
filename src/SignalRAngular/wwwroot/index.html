@@ -24,7 +24,7 @@
                     <h2>{{subtitle}}</h2>
                 </div>
             </div>
-            <form ng-submit="sendMessage(name,message)">
+            <form ng-submit="sendMessage(name,message); message=''">
                 <div class="row">
                     <label class="sr-only" for="message-input">Your message.</label>
                     <div class="col-xs-12 col-sm-3 col-md-3">
@@ -52,6 +52,10 @@
             </div>
         </div>
     </div>
+
+    <pre>
+{{messages}}
+    </pre>
 
     <script src="/lib/jquery/dist/jquery.min.js"></script>
     <script src="/lib/angular/angular.min.js"></script>
