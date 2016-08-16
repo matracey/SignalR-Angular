@@ -54,7 +54,7 @@
     "postpublish": [ 
       "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%"
     ],
-    "prepublish": ["npm install", "node node_modules\bower\bin\bower install"]
+    "prepublish": ["npm install", "node node_modules\\bower\\bin\\bower install"]
   },
 
   "tooling": {
