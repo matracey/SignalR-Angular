@@ -1,4 +1,6 @@
 {
+  "name": "SignalRAngular",
+  "version":"0.1.0",
   "dependencies": {
     "Microsoft.NETCore.App": {
       "version": "1.0.0",
@@ -50,11 +52,9 @@
 
   "scripts": {
     "postpublish": [ 
-      "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%",
-      "npm install",
-      "npm install -g bower-npm-resolver",
-      "bower install" 
-    ]
+      "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%"
+    ],
+    "prepublish": ["npm install", "node node_modules\bower\bin\bower install"]
   },
 
   "tooling": {
