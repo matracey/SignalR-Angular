@@ -20,6 +20,7 @@ namespace SignalRAngular
             services.AddSignalR();
             services.AddSingleton<List<Message>>();
             services.AddSingleton<Subtitle>();
+            services.AddSingleton<Shape>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -21,3 +21,9 @@
 input.ng-invalid {
     border: 1px solid red;
 }
+
+.shape {
+    width: 50px;
+    height: 50px;
+    background-color: #445588
+}

@@ -1,12 +1,10 @@
 (function() {
 'use strict';
 
-    angular
-        .module('SignalRAngular')
-        .controller('ChatController', ChatController);
+    angular.module('SignalRAngular').controller('ChatController', ChatController);
 
-    ChatController.$inject = ['$scope', 'Messages', '$timeout'];
-    function ChatController($scope, Messages, $timeout) {
+    ChatController.$inject = ['$scope', 'Messages'];
+    function ChatController($scope, Messages) {
         $scope.title = "SignalR with AngularJS";
         $scope.subtitle = Messages.subtitle;
         $scope.messages = Messages.all;

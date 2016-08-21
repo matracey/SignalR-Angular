@@ -13,13 +13,14 @@ namespace SignalRAngular.Models
 
         [JsonProperty("Id")]
         public Guid Id { get; set; }
-        [JsonProperty("Name")]
         
+        [JsonProperty("Name")]
         public string Name { get; set; }
         
         [JsonProperty("Message")]
         public string Content { get; set; }
 
+        [JsonProperty("Timestamp")]
         public DateTime Timestamp { get; set; }
     }
 }

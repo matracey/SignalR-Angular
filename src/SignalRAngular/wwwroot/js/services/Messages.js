@@ -46,16 +46,16 @@
             stateChanged: function (state) {
                 switch (state.newState) {
                     case $.signalR.connectionState.connecting:
-                        console.log("Connecting...");
+                        console.log("ChatHub Connecting...");
                         break;
                     case $.signalR.connectionState.connected:
-                        console.log("Connected.");
+                        console.log("ChatHub Connected.");
                         break;
                     case $.signalR.connectionState.reconnecting:
-                        console.log("Reconnecting...");
+                        console.log("ChatHub Reconnecting...");
                         break;
                     case $.signalR.connectionState.disconnected:
-                        console.log("Disconnected.");
+                        console.log("ChatHub Disconnected.");
                         break;
                     default:
                         console.log(state.newState);

@@ -11,56 +11,62 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 
-<body ng-controller="ChatController">
+<body>
     <div class="container-fluid">
-        <div class="upper-third">
-            <div class="row">
-                <div class="col-xs-12 text-center">
-                    <h1>{{title}}</h1>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 text-center">
-                    <h2 single-line="true" focus-select="true" edit-callback="subtitleUpdate" content-editable ng-model="subtitle.Text"></h2>
-                </div>
-            </div>
-            <form name="messageForm" ng-submit="sendMessage(name,message); message=''">
-                <div class="row">
-                    <label class="sr-only" for="message-input">Your message.</label>
-                    <div class="col-xs-12 col-sm-3 col-md-3">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="name-input" placeholder="Your name" required ng-model="name" />
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-7 col-md-8">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="message-input" placeholder="Your message" required ng-model="message" />
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-2 col-md-1">
-                        <button type="submit" class="btn btn-primary btn-block" ng-disabled="!messageForm.$valid">Send!</button>
-                    </div>
-                </div>
-            </form>
-        </div>
 
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="well well-sm message-well">
-                    <p ng-repeat="message in messages" id="{{message.Id}}"><span class="date">{{message.Timestamp | date:'yyyy-MM-dd HH:mm:ss'}}: </span><span class="name">{{message.Name}}: </span>{{message.Message}}</p>
+        <div ng-controller="ChatController">
+            <div class="upper-third">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <h1>{{title}}</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <h2 single-line="true" focus-select="true" edit-callback="subtitleUpdate" content-editable ng-model="subtitle.Text"></h2>
+                    </div>
+                </div>
+                <form name="messageForm" ng-submit="sendMessage(name,message); message=''">
+                    <div class="row">
+                        <label class="sr-only" for="message-input">Your message.</label>
+                        <div class="col-xs-12 col-sm-3 col-md-3">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="name-input" placeholder="Your name" required ng-model="name" />
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-7 col-md-8">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="message-input" placeholder="Your message" required ng-model="message" />
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-2 col-md-1">
+                            <button type="submit" class="btn btn-primary btn-block" ng-disabled="!messageForm.$valid">Send!</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="well well-sm message-well">
+                        <p ng-repeat="message in messages" id="{{message.Id}}"><span class="date">{{message.Timestamp | date:'yyyy-MM-dd HH:mm:ss'}}: </span><span class="name">{{message.Name}}: </span>{{message.Message}}</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </div> <!-- ChatController -->
+
+    </div> <!-- .container-fluid -->
 
     <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/jquery-ui/jquery-ui.min.js"></script>
+
     <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/lib/signalr/jquery.signalR.min.js"></script>
     <script src="/signalr/hubs"></script>
 
     <script src="/lib/angular/angular.min.js"></script>
     <script src="/lib/angular-signalr-hub/signalr-hub.min.js"></script>
-    <script src="/lib/angular-content-editable/dist/angular-content-editable.js"></script>
+    <script src="/lib/angular-content-editable/dist/angular-content-editable.min.js"></script>
 
 
     <script src="js/app.js"></script>
